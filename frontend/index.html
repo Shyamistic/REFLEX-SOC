@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>REFLEX SOC - Autonomous Multi-Tenant Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="dashboard">
+    <h1 class="neon-text">🚀 REFLEX SOC - Autonomous Enterprise Platform v3.0</h1>
+    
+    <!-- USER LOGIN -->
+    <div class="card">
+      <h2 class="accent">👤 User Info</h2>
+      <div id="user-info">Logged out</div>
+      <button onclick="login('analyst', 'analyst123')">✅ Login as Analyst</button>
+    </div>
+
+    <!-- AGENTS ONLINE -->
+    <div class="card">
+      <h2 class="accent">🖥️ Agents Online</h2>
+      <div id="agents-online"></div>
+    </div>
+
+    <!-- LIVE SECURITY EVENTS -->
+    <div class="card">
+      <h2 class="accent">📡 Live Security Events</h2>
+      <div id="live-events"></div>
+    </div>
+
+    <!-- INCIDENT LOG -->
+    <div class="card">
+      <h2 class="accent">📋 Incident Log</h2>
+      <div id="logs"></div>
+    </div>
+
+    <!-- POLICY CONTROLS -->
+    <div class="card">
+      <h2 class="accent">🛡️ Policy Controls</h2>
+      <div id="policy"></div>
+      <input id="blockInput" placeholder="Block keyword..."/>
+      <button onclick="addBlock()">Add Block</button>
+    </div>
+
+    <!-- AI-DETECTED INCIDENTS -->
+    <div class="card">
+      <h2 class="accent">🤖 AI-Detected Incidents (Auto-Triage)</h2>
+      <div id="ai-incidents"></div>
+    </div>
+
+    <!-- SOC LIVE STATS -->
+    <div class="card">
+      <h2 class="accent">📊 SOC Live Stats</h2>
+      <canvas id="statsChart"></canvas>
+    </div>
+
+    <!-- AUTO-RESPONSE PLAYBOOKS -->
+    <div class="card">
+      <h2 class="accent">⚙️ Auto-Response Playbooks</h2>
+      <div id="playbooks"></div>
+      <button onclick="executePlaybook('pb_demo', 1)">Test Execute Playbook</button>
+    </div>
+
+    <!-- RESPONSE EXECUTION LOGS -->
+    <div class="card">
+      <h2 class="accent">📊 Response Execution Logs</h2>
+      <div id="execution-logs"></div>
+    </div>
+
+    <!-- CLOUD INTEGRATION STATUS -->
+    <div class="card">
+      <h2 class="accent">🔗 Cloud Integration Status</h2>
+      <div id="integration-status"></div>
+    </div>
+
+    <!-- REAL-TIME INTEGRATION ACTIONS -->
+    <div class="card">
+      <h2 class="accent">⚡ Real-Time Integration Actions</h2>
+      <div id="integration-logs"></div>
+      <br>
+      <button onclick="triggerAWSIsolation()">🔒 Test AWS Isolation</button>
+      <button onclick="triggerOktaTokenRevoke()">🚫 Test Okta Revoke</button>
+      <button onclick="triggerEDRQuarantine()">⛔ Test EDR Quarantine</button>
+    </div>
+
+    <!-- EXPORT FORENSICS -->
+    <div class="card">
+      <h2 class="accent">💾 Export Evidence & Log</h2>
+      <button onclick="exportCSV()">📥 Export All Forensics (CSV)</button>
+    </div>
+  </div>
+  <!-- ML DETECTION STATS -->
+<div class="card">
+  <h2 class="accent">🤖 ML Detection Engine</h2>
+  <div id="ml-stats"></div>
+</div>
+
+<!-- ORGANIZATION BILLING & SUBSCRIPTION -->
+<div class="card">
+  <h2 class="accent">💳 Organization Billing & Subscription</h2>
+  <div id="org-billing"></div>
+</div>
+
+<!-- PLATFORM ANALYTICS (SaaS Admin) -->
+<div class="card">
+  <h2 class="accent">📊 Platform Analytics (SaaS Dashboard)</h2>
+  <div id="platform-analytics"></div>
+  <button onclick="getPlatformAnalytics()">Refresh Analytics</button>
+</div>
+
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="dashboard.js"></script>
+  <script src="chart.js"></script>
+  <script src="export.js"></script>
+</body>
+</html>

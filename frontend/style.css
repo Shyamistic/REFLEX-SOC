@@ -1,0 +1,66 @@
+body {
+  background: #1a1a2e;
+  color: #fff;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+}
+.dashboard {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+.neon-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px #00f0ff, 0 0 16px #39ff14;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.card {
+  background: #181834;
+  border: 2px solid #00f0ff;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 16px #39ff1466, 0 0 32px #bc13fe33;
+}
+.accent {
+  color: #39ff14;
+  text-shadow: 0 0 8px #bc13fe;
+}
+ul, #logs {
+  margin-top: 1rem;
+}
+.agent-online {
+  color: #39ff14;
+  text-shadow: 0 0 5px #39ff1466;
+}
+.incident {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #bc13fe;
+}
+input, button {
+  background: #181834;
+  color: #fff;
+  border: 1px solid #39ff14;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+}
+button {
+  background: #bc13fe;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 0.5em;
+  box-shadow: 0 0 5px #bc13fe99;
+}
+button:hover {
+  background: #00f0ff;
+  color: #181834;
+}
+@media (max-width: 600px) {
+  .card { padding: 1rem; margin: 0.5rem 0; }
+  .dashboard { padding: 1rem; }
+  h1 { font-size: 1.3rem; }
+  .accent { font-size: 1rem; }
+  input, button { width: 100%; margin: 0.5rem 0; }
+}
