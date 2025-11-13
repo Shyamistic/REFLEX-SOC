@@ -9,6 +9,7 @@ from forensics import router as forensics_router
 from saas import router as saas_router
 from ml_engine import detector
 import json
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI(title="REFLEX - Autonomous SOC Platform v4.0 (ML + SaaS)")
 
@@ -56,6 +57,7 @@ app.include_router(integrations_router)
 app.include_router(baseline_router)
 app.include_router(forensics_router)
 app.include_router(saas_router)
+app.mount("/", StaticFiles(directory="../frontend", html=True), name="static")
 
 @app.get("/")
 def root():
