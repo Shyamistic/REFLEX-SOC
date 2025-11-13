@@ -13,9 +13,9 @@ let statsChart = new Chart(ctx, {
 });
 
 async function updateChartData() {
-  const agents = await fetch("http://localhost:8899/agent/").then(r => r.json()).catch(()=>[]);
-  const incidents = await fetch("http://localhost:8899/forensics/").then(r => r.json()).catch(()=>[]);
-  const policy = await fetch("http://localhost:8899/baseline/policy").then(r => r.json()).catch(()=>({ allow:[], block:[] }));
+ const agents = await fetch(`${API_BASE}/agent/`).then(r => r.json()).catch(() => []);
+ const incidents = await fetch(`${API_BASE}/forensics/`).then(r => r.json()).catch(() => []);
+ const policy = await fetch(`${API_BASE}/baseline/policy`).then(r => r.json()).catch(() => ({ allow: [], block: [] }));
   statsChart.data.datasets[0].data = [
     agents.length,
     incidents.length,

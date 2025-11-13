@@ -1,33 +1,26 @@
-async function exportCSV() {
-  // Fetch the export endpoint
-  const resp = await fetch("http://localhost:8899/forensics/export");
+// export.js
+const API_BASE = "https://reflex-soc.onrender.com";
 
-  // Detect CSV response type, fallback to JSON otherwise
-  const contentType = resp.headers.get("Content-Type") || "";
-  if (contentType.includes("text/csv")) {
-    // Handle as CSV (download file)
-    const csv = await resp.text();
-    const blob = new Blob([csv], { type: "text/csv" });
+async function exportCSV() {
+  try {
+    // Fetch the export endpoint from your deployed backend
+    const resp = await fetch(`${API_BASE}/forensics/export`);
+    if (!resp.ok) {
+      throw new Error("Export failed");
+    }
+    const blob = await resp.blob();
+
+    // Create a download link for the CSV file
     const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "evidence.csv";
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "incidents_export.csv";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    return;
+  } catch (err) {
+    alert("Failed to export: " + err.message);
   }
-
-  // Else, treat as JSON and build CSV as before
-  const evidence = await resp.json();
-  let csv = "id,action,score,timestamp\n";
-  for (const e of evidence) {
-    csv += `${e.id},"${e.action}",${e.details?.score || ""},${e.created_at}\n`;
-  }
-  const blob = new Blob([csv], { type: "text/csv" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "evidence.csv";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
 }
+
+// You could add a button in your index.html like:
+// <button onclick="exportCSV()">Export Incidents CSV</button>
