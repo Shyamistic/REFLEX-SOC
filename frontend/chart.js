@@ -1,3 +1,5 @@
+const API_BASE = "https://reflex-soc.onrender.com";
+
 const ctx = document.getElementById('statsChart').getContext('2d');
 let statsChart = new Chart(ctx, {
   type: 'bar',
@@ -13,9 +15,9 @@ let statsChart = new Chart(ctx, {
 });
 
 async function updateChartData() {
- const agents = await fetch(`${API_BASE}/agent/`).then(r => r.json()).catch(() => []);
- const incidents = await fetch(`${API_BASE}/forensics/`).then(r => r.json()).catch(() => []);
- const policy = await fetch(`${API_BASE}/baseline/policy`).then(r => r.json()).catch(() => ({ allow: [], block: [] }));
+  const agents    = await fetch(`${API_BASE}/agent/`).then(r => r.json()).catch(() => []);
+  const incidents = await fetch(`${API_BASE}/forensics/`).then(r => r.json()).catch(() => []);
+  const policy    = await fetch(`${API_BASE}/baseline/policy`).then(r => r.json()).catch(() => ({ allow:[], block:[] }));
   statsChart.data.datasets[0].data = [
     agents.length,
     incidents.length,
